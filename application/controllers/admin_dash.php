@@ -60,7 +60,7 @@ class admin_dash extends CI_Controller
 			{
 				$this->session->set_flashdata('msg','book is already registered!');
 				$this->session->set_flashdata('msg_class','alert-danger');
-				$this->increase($a);
+			
 			}
 			return redirect('admin_dash/bookinfo');
 		}
