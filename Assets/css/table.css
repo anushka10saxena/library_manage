@@ -1,0 +1,37 @@
+h1
+{
+	font-size: 40px;
+	font-weight: bold;
+	color: #404040;
+	font-family: "Times New Roman";
+}
+div
+{
+	background-color:lightyellow ;
+	opacity: 1;
+}
+table
+{
+	border-collapse: separate;
+	border: solid white 1px;
+	border-radius: 3px;
+	-moz-border-radius:6px;
+}
+td,th
+{
+	border-left: solid black 1px;
+	border-top:solid black 1px;
+}
+tr:nth-child(even)
+{
+	background-color: lightgreen;
+}
+th
+{
+	background-color: grey;
+	border-top: none;
+}
+td:first-child,th:first-child{
+	border-left: none;
+}
+}

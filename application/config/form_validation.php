@@ -1,0 +1,89 @@
+<?php
+$config=[
+         'user_validation'=>[
+	                        [
+		                       'field'=>'name',
+	                         'label'=>'name',
+	                         'rules'=>'required'
+                            ],
+                            [
+                            'field'=>'password',
+	                         'label'=>'password',
+	                         'rules'=>'required'	
+                            ],
+                            [
+                            'field'=>'email',
+                           'label'=>'email',
+                           'rules'=>'required|is_unique[student.email]'  
+                            ],
+                            [
+		                       'field'=>'username',
+	                         'label'=>'username',
+	                         'rules'=>'required|is_unique[student.username]'
+                            ]
+                            
+                        ],
+
+         'book_validation'=>[
+         	                 [
+         	                 	'field'=>'title',
+         	                 	'label'=>'title',
+         	                 	'rules'=>'required|is_unique[books.title]'
+         	                 ],
+         	                 [
+         	                 	'field'=>'author',
+         	                 	'label'=>'author',
+         	                 	'rules'=>'required'
+         	                 ],
+         	                 [
+         	                 	'field'=>'cost',
+         	                 	'label'=>'cost',
+         	                 	'rules'=>'required|numeric'
+         	                 ],
+         	                 [
+         	                 	'field'=>'quantity',
+         	                 	'label'=>'quantity',
+         	                 	'rules'=>'required|numeric'
+         	                 ]
+
+                            ],
+          'issue_validation'=>[
+          	                  [
+                            'field'=>'student_id',
+                            'label'=>'student id',
+                            'rules'=>'required'
+          	                  	
+          	                  ],
+          	                  [
+          	                'field'=>'name',
+                            'label'=>'name',
+                            'rules'=>'required'
+          	                  ],
+          	                  [
+          	                'field'=>'title',
+         	                 	'label'=>'book title',
+         	                 	'rules'=>'required'
+          	                  ]
+                              ],
+          'placeorder_validate'=>[
+                              [
+                                'field'=>'title',
+                                'label'=>'book',
+                                'rules'=>'required'
+                              ],
+                              [
+                                'field'=>'author',
+                                'label'=>'author',
+                                'rules'=>'required'
+                              ],
+                              [
+                                'field'=>'quantity',
+                                'label'=>'quantity',
+                                'rules'=>'required|numeric'
+                              ],
+                              [
+                                'field'=>'orderdate',
+                              ],
+                              ],                  
+        ];
+?>

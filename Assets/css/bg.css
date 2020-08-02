@@ -1,0 +1,49 @@
+body
+{
+	background-image:url("../upload/library.jpg");
+	width:100%;
+	height: auto;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+h1
+{
+	text-align: center;
+	left: 0; bottom:0; right: 0;
+	margin: auto;
+	max-width: 600px;
+	font-size: 100px;
+	font-style: italic;
+	font-weight: bold;
+	color: #ff4d4d;
+	font-family: "Times New Roman";
+}
+h3
+{
+	font-size: 50px;
+	font-style: italic;
+	font-weight: bold;
+	color: #ff4d4d;
+	font-family: "Times New Roman";
+}
+table
+{
+	border-collapse: separate;
+	border: solid black 1px;
+	border-radius: 6px;
+	-moz-border-radius:6px;
+}
+td,th
+{
+	border-left: solid black 1px;
+	border-top: solid black 1px;
+}
+th
+{
+	background-color: blue;
+	border-top: none;
+}
+td:first-child,th:first-child{
+	border-left: none;
+}
