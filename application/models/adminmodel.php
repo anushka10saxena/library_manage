@@ -75,7 +75,16 @@ class adminmodel extends CI_Model
     	         	$q=$this->db->select(['book_id'])
     	         	         ->where(['title'=>$title])
     	         	         ->get('books');
-    	         	         return $q->row()->book_id;
+    	         	         bookid= $q->row()->book_id;
+			 $data=(['title'=>$title,'author'=>$author,'cost'=>$cost]);
+    	         	//$this->db->set('quantity',"quantity+$quantity",FALSE)
+                         $this->db->where(['book_id'=>$bookid])
+                             ->update('books',$data);
+                         $quantity=$_POST['quantity'];
+                         $this->db->set('quantity',"quantity+$quantity",FALSE)
+                             ->where(['book_id'=>$bookid])
+                             ->update('books');
+                    return false;
     	         }
     	
     }
