@@ -4,6 +4,33 @@ class student extends CI_Controller
 		public function __construct()
 		{
 			parent::__construct();
+			
+		$post=$this->adminmodel->user();
+		$array=json_decode(json_encode($post),true);
+		//print_r($array);
+		//exit;
+		    foreach ($array as $key) 
+		    {
+		    	$return_date=$key['return_date'];
+		    	$user_id=$key['user_id'];
+		    	$status=$key['status'];
+		        //exit;
+		    	if ($return_date<date('y-m-d')&&$status!=true)
+		    	{
+		    		$p=$this->studentmodel->student($user_id);
+		    		$a=json_decode(json_encode($p),true);
+		    		$email=$a[0]['email'];
+		    	    //echo $a[0]['email'];
+		            //exit;
+		                $this->load->library('email');
+			        $this->email->from("anushka10saxena@gmail.com");
+			        $this->email->to("$email");
+			        $this->email->subject("Exceeded due date to return the book");
+			        $this->email->message("You have exceeded the due to date of 1 month to return the book. Kindly return it to prevent imposition of fine.");
+			        $this->email->set_newline("\r\n");
+			        $this->email->send();
+			}
+		    }
 			if($this->session->userdata('id'))
 				return redirect('student_dash/welcome');
 
@@ -103,42 +130,6 @@ class student extends CI_Controller
 				$this->load->view('student/register',['student'=>$student],compact('upload_error'));
 			}
 		}
-		public function timeup()
-	    {
-		$post=$this->adminmodel->user();
-		$array=json_decode(json_encode($post),true);
-		//print_r($array);
-		//exit;
-		    foreach ($array as $key) 
-		    {
-		    	$return_date=$key['return_date'];
-		    	$user_id=$key['user_id'];
-		    	$status=$key['status'];
-		        //exit;
-		    	if ($return_date<date('y-m-d')&&$status!=true)
-		    	{
-		    		$p=$this->studentmodel->student($user_id);
-		    		$a=json_decode(json_encode($p),true);
-		    		$email=$a[0]['email'];
-		    	    //echo $a[0]['email'];
-		            //exit;
-		            $this->load->library('email');
-			        $this->email->from("anushka10saxena@gmail.com");
-			        $this->email->to("$email");
-			        $this->email->subject("Exceeded due date to return the book");
-			        $this->email->message("You have exceeded the due to date of 1 month to return the book. Kindly return it to prevent imposition of fine.");
-			        $this->email->set_newline("\r\n");
-			        $this->email->send();
-				    if(!$this->email->send())
-				    {
-					show_error($this->email->print_debugger());
-				    }
-			        else
-			        {
-				    echo "your email has been sent";
-			        }
-		    	}		    	
-		    }
-	    }
+		
 	}
 ?>
